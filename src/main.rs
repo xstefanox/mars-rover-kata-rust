@@ -13,9 +13,12 @@ struct Position {
     y: u8,
 }
 
-#[derive(PartialEq, Debug)]
+#[derive(PartialEq, Debug, Copy, Clone)]
 enum Direction {
     N,
+    S,
+    W,
+    E,
 }
 
 impl Default for MarsRover {
@@ -38,6 +41,7 @@ impl Default for Position {
 
 #[cfg(test)]
 mod tests {
+    use rstest::rstest;
     use crate::{Direction, MarsRover, Position};
 
     #[test]
@@ -73,13 +77,17 @@ mod tests {
         assert_eq!(mars_rover.direction, Direction::N)
     }
 
-    #[test]
-    fn given_initial_direction() {
+    #[rstest]
+    #[case(Direction::N)]
+    #[case(Direction::S)]
+    #[case(Direction::W)]
+    #[case(Direction::E)]
+    fn given_initial_direction(#[case] direction: Direction) {
         let mars_rover = MarsRover {
-            direction: Direction::N,
+            direction,
             ..MarsRover::default()
         };
 
-        assert_eq!(mars_rover.direction, Direction::N)
+        assert_eq!(mars_rover.direction, direction)
     }
 }
