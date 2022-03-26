@@ -4,7 +4,7 @@ fn main() {
 
 struct MarsRover {
     position: Position,
-    direction: String,
+    direction: Direction,
 }
 
 #[derive(PartialEq, Debug)]
@@ -13,11 +13,16 @@ struct Position {
     y: u8,
 }
 
+#[derive(PartialEq, Debug)]
+enum Direction {
+    N,
+}
+
 impl Default for MarsRover {
     fn default() -> Self {
         MarsRover {
             position: Position::default(),
-            direction: String::from("N"),
+            direction: Direction::N,
         }
     }
 }
@@ -33,7 +38,7 @@ impl Default for Position {
 
 #[cfg(test)]
 mod tests {
-    use crate::{MarsRover, Position};
+    use crate::{Direction, MarsRover, Position};
 
     #[test]
     fn default_initial_position() {
@@ -65,6 +70,6 @@ mod tests {
     fn default_initial_direction() {
         let mars_rover = MarsRover::default();
 
-        assert_eq!(mars_rover.direction, "N")
+        assert_eq!(mars_rover.direction, Direction::N)
     }
 }
