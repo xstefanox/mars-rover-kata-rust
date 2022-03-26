@@ -27,4 +27,15 @@ mod tests {
         assert_eq!(mars_rover.x, 0);
         assert_eq!(mars_rover.y, 0);
     }
+
+    #[test]
+    fn given_initial_position() {
+        let mars_rover = MarsRover {
+            x: 1,
+            y: 2,
+        };
+
+        assert_eq!(mars_rover.x, 1);
+        assert_eq!(mars_rover.y, 2);
+    }
 }
