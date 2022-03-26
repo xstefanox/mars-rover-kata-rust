@@ -3,6 +3,10 @@ fn main() {
 }
 
 struct MarsRover {
+    position: Position,
+}
+
+struct Position {
     x: u8,
     y: u8,
 }
@@ -10,32 +14,36 @@ struct MarsRover {
 impl Default for MarsRover {
     fn default() -> Self {
         MarsRover {
-            x: 0,
-            y: 0,
+            position: Position {
+                x: 0,
+                y: 0,
+            }
         }
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::MarsRover;
+    use crate::{MarsRover, Position};
 
     #[test]
     fn default_initial_position() {
         let mars_rover = MarsRover::default();
 
-        assert_eq!(mars_rover.x, 0);
-        assert_eq!(mars_rover.y, 0);
+        assert_eq!(mars_rover.position.x, 0);
+        assert_eq!(mars_rover.position.y, 0);
     }
 
     #[test]
     fn given_initial_position() {
         let mars_rover = MarsRover {
-            x: 1,
-            y: 2,
+            position: Position {
+                x: 1,
+                y: 2,
+            }
         };
 
-        assert_eq!(mars_rover.x, 1);
-        assert_eq!(mars_rover.y, 2);
+        assert_eq!(mars_rover.position.x, 1);
+        assert_eq!(mars_rover.position.y, 2);
     }
 }
