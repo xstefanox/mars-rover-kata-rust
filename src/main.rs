@@ -14,10 +14,16 @@ struct Position {
 impl Default for MarsRover {
     fn default() -> Self {
         MarsRover {
-            position: Position {
-                x: 0,
-                y: 0,
-            }
+            position: Position::default(),
+        }
+    }
+}
+
+impl Default for Position {
+    fn default() -> Self {
+        Position {
+            x: 0,
+            y: 0,
         }
     }
 }
