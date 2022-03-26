@@ -72,4 +72,14 @@ mod tests {
 
         assert_eq!(mars_rover.direction, Direction::N)
     }
+
+    #[test]
+    fn given_initial_direction() {
+        let mars_rover = MarsRover {
+            direction: Direction::N,
+            ..MarsRover::default()
+        };
+
+        assert_eq!(mars_rover.direction, Direction::N)
+    }
 }
