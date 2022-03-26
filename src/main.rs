@@ -6,6 +6,7 @@ struct MarsRover {
     position: Position,
 }
 
+#[derive(PartialEq, Debug)]
 struct Position {
     x: u8,
     y: u8,
@@ -36,8 +37,10 @@ mod tests {
     fn default_initial_position() {
         let mars_rover = MarsRover::default();
 
-        assert_eq!(mars_rover.position.x, 0);
-        assert_eq!(mars_rover.position.y, 0);
+        assert_eq!(mars_rover.position, Position {
+            x: 0,
+            y: 0,
+        });
     }
 
     #[test]
@@ -49,7 +52,9 @@ mod tests {
             }
         };
 
-        assert_eq!(mars_rover.position.x, 1);
-        assert_eq!(mars_rover.position.y, 2);
+        assert_eq!(mars_rover.position, Position {
+            x: 1,
+            y: 2,
+        });
     }
 }
