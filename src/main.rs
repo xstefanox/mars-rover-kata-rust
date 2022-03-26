@@ -4,6 +4,7 @@ fn main() {
 
 struct MarsRover {
     position: Position,
+    direction: String,
 }
 
 #[derive(PartialEq, Debug)]
@@ -16,6 +17,7 @@ impl Default for MarsRover {
     fn default() -> Self {
         MarsRover {
             position: Position::default(),
+            direction: String::from("N"),
         }
     }
 }
@@ -49,12 +51,20 @@ mod tests {
             position: Position {
                 x: 1,
                 y: 2,
-            }
+            },
+            ..MarsRover::default()
         };
 
         assert_eq!(mars_rover.position, Position {
             x: 1,
             y: 2,
         });
+    }
+
+    #[test]
+    fn default_initial_direction() {
+        let mars_rover = MarsRover::default();
+
+        assert_eq!(mars_rover.direction, "N")
     }
 }
